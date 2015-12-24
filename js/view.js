@@ -1,5 +1,5 @@
 //маштаб карти
-var step=300;
+var step=60;
 //координати файла карти яку потрібно показувати
 var j1=0;
 var i1=0;
@@ -32,32 +32,35 @@ loadImage("tree");
 loadScript("pole_"+j1+"_"+i1+".js");
 //створення канваса
 $('#scr').append('<canvas id="canvas"></canvas>');
-//змінна костиль, яка здвигає зображення, щоб воно не виходило за край канваса
-var move=step*pole[j1][i1].length/2;
-//задання розміру канваса
-$('#canvas')[0].width=iso(step*(pole[j1][i1][0].length-1)+move+step,step*0-move).x;
-$('#canvas')[0].height=iso(step*(pole[j1][i1][0].length-1)+move+step,step*(pole[j1][i1].length-1)-move+step).y;
-var ctx=$('#canvas')[0].getContext('2d');
+var canvas = new Canvas(pole[j1][i1],step,$('#canvas'));
+canvas.show(step);
 //масив зображень рельєфу території
 var img_pole=[images["way"]];
 //Створення об’єкту території
-var field1 = new Field(pole[j1][i1],img_pole,step,ctx);
+var field1 = new Field(img_pole,canvas);
 //Створення об’єкту дерева
-var tree1 = new Tree(1,2,2,images["tree"],step,ctx,move);
-var tree2 = new Tree(1,2,3,images["tree"],step,ctx,move);
-var tree3 = new Tree(1,3,2,images["tree"],step,ctx,move);
-var tree4 = new Tree(1,3,3,images["tree"],step,ctx,move);
+var tree1 = new Tree(1,2,2,images["tree"],canvas);
+var tree2 = new Tree(1,2,3,images["tree"],canvas);
+var tree3 = new Tree(1,3,2,images["tree"],canvas);
+var tree4 = new Tree(1,3,3,images["tree"],canvas);
 //Перемалювання
 setInterval(function(){
-	ctx.clearRect(0,0,$('#canvas').width(),$('#canvas').height());
-	field1.draw();
-	tree1.draw();
-	tree2.draw();
-	tree3.draw();
-	tree4.draw();
+	canvas.clear()
+	field1.draw(step);
+	tree1.draw(step);
+	tree2.draw(step);
+	tree3.draw(step);
+	tree4.draw(step);
 },100);
-
-
+//Функції кнопок керування масштабом
+$('#size_plus').on('click',function(){
+	step/=0.7;
+	canvas.show(step);
+});
+$('#size_minus').on('click',function(){
+	step*=0.7;
+	canvas.show(step);
+});
 //функція динамічного завантаження скрипта
 function loadScript(url){
    $('head').append('<script src="js/'+url+'" type="text/javascript"></script>');
