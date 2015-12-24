@@ -23,11 +23,16 @@ for(var a=0;a<m;a++){
 		}
 	}
 }
+//масив будівель
+var buildings=[];
+//масив шляхів
+var ways=[];
 //масив зображень, які наносяться на територіяю
 var images = {};
 //завантаження зображень на сторінку
 loadImage("way");
 loadImage("tree");
+loadImage("way0000");
 //завантаження видимого файла карти
 loadScript("pole_"+j1+"_"+i1+".js");
 //створення канваса
@@ -39,27 +44,44 @@ var img_pole=[images["way"]];
 //Створення об’єкту території
 var field1 = new Field(img_pole,canvas);
 //Створення об’єкту дерева
-var tree1 = new Tree(1,2,2,images["tree"],canvas);
-var tree2 = new Tree(1,2,3,images["tree"],canvas);
-var tree3 = new Tree(1,3,2,images["tree"],canvas);
-var tree4 = new Tree(1,3,3,images["tree"],canvas);
+new Tree(1,2,2,images["tree"],canvas);
+new Tree(1,2,3,images["tree"],canvas);
+new Tree(1,3,2,images["tree"],canvas);
+new Tree(1,3,3,images["tree"],canvas);
+//масив зображень виду шляхів
+var img_ways=[images["way0000"]];
+//Створення об’єкту шлях
+/*Змінити метод відображення на ways.filter(function(item){return item.x==4&&item.y==4;});*/
+new Way(1,4,img_ways,canvas);
+new Way(2,4,img_ways,canvas);
+new Way(3,4,img_ways,canvas);
+new Way(4,4,img_ways,canvas);
+new Way(4,3,img_ways,canvas);
+new Way(4,2,img_ways,canvas);
+new Way(4,1,img_ways,canvas);
 //Перемалювання
 setInterval(function(){
 	canvas.clear()
-	field1.draw(step);
-	tree1.draw(step);
-	tree2.draw(step);
-	tree3.draw(step);
-	tree4.draw(step);
+	field1.draw();
+	ways.forEach(function(item){
+		item.draw();
+	});
+	buildings.forEach(function(item){
+		item.draw();
+	});
 },100);
 //Функції кнопок керування масштабом
 $('#size_plus').on('click',function(){
-	step/=0.7;
-	canvas.show(step);
+	if(step<1040){
+		step/=0.7;
+		canvas.show(step);
+	}
 });
 $('#size_minus').on('click',function(){
-	step*=0.7;
-	canvas.show(step);
+	if(step>15){
+		step*=0.7;
+		canvas.show(step);
+	}
 });
 //функція динамічного завантаження скрипта
 function loadScript(url){

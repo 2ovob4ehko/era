@@ -1,0 +1,95 @@
+<style>
+table{border-spacing:0px;border-collapse:collapse;}
+td{width:68px;height:70px;}
+.way0110{background: url('way0110.png') 100% 100% no-repeat;background-size:cover;}
+.way0101{background: url('way0101.png') 100% 100% no-repeat;background-size:cover;}
+.way0011{background: url('way0011.png') 100% 100% no-repeat;background-size:cover;}
+.way1010{background: url('way1010.png') 100% 100% no-repeat;background-size:cover;}
+.way{background: url('way.png') 100% 100% no-repeat;background-size:cover;}
+.way1100{background: url('way1100.png') 100% 100% no-repeat;background-size:cover;}
+.way1001{background: url('way1001.png') 100% 100% no-repeat;background-size:cover;}
+.way1111{background: url('way1111.png') 100% 100% no-repeat;background-size:cover;}
+.way1011{background: url('way1011.png') 100% 100% no-repeat;background-size:cover;}
+.way1110{background: url('way1110.png') 100% 100% no-repeat;background-size:cover;}
+.way0111{background: url('way0111.png') 100% 100% no-repeat;background-size:cover;}
+.way1101{background: url('way1101.png') 100% 100% no-repeat;background-size:cover;}
+.way1000{background: url('way1000.png') 100% 100% no-repeat;background-size:cover;}
+.way0100{background: url('way0100.png') 100% 100% no-repeat;background-size:cover;}
+.way0010{background: url('way0010.png') 100% 100% no-repeat;background-size:cover;}
+.way0001{background: url('way0001.png') 100% 100% no-repeat;background-size:cover;}
+.way0000{background: url('way0000.png') 100% 100% no-repeat;background-size:cover;}
+</style>
+<div id="text"></div>
+<script>
+  var map=[
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [1,1,0,0,1,0,1,1,0],
+    [0,1,0,1,1,1,0,1,0],
+    [1,1,1,0,1,0,1,1,1],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0]
+  ];
+  var out='<table>';
+  for(var i=0;i<map.length;i++){
+    out+='<tr>';
+    for(var j=0;j<map[i].length;j++){
+      if(orient(map,i,j,1,0,1,0)){
+        out+='<td class="way1010"></td>';
+      }else if(orient(map,i,j,0,1,0,1)){
+        out+='<td class="way0101"></td>';
+      }else if(orient(map,i,j,1,0,0,1)){
+        out+='<td class="way1001"></td>';
+      }else if(orient(map,i,j,1,1,0,0)){
+        out+='<td class="way1100"></td>';
+      }else if(orient(map,i,j,0,0,1,1)){
+        out+='<td class="way0011"></td>';
+      }else if(orient(map,i,j,0,1,1,0)){
+        out+='<td class="way0110"></td>';
+      }else if(orient(map,i,j,1,1,1,1)){
+        out+='<td class="way1111"></td>';
+      }else if(orient(map,i,j,1,0,1,1)){
+        out+='<td class="way1011"></td>';
+      }else if(orient(map,i,j,1,1,1,0)){
+        out+='<td class="way1110"></td>';
+      }else if(orient(map,i,j,0,1,1,1)){
+        out+='<td class="way0111"></td>';
+      }else if(orient(map,i,j,1,1,0,1)){
+        out+='<td class="way1101"></td>';
+      }else if(orient(map,i,j,0,0,0,1)){
+        out+='<td class="way0001"></td>';
+      }else if(orient(map,i,j,0,1,0,0)){
+        out+='<td class="way0100"></td>';
+      }else if(orient(map,i,j,0,0,1,0)){
+        out+='<td class="way0010"></td>';
+      }else if(orient(map,i,j,1,0,0,0)){
+        out+='<td class="way1000"></td>';
+      }else if(orient(map,i,j,0,0,0,0)){
+        out+='<td class="way0000"></td>';
+      }else{
+        out+='<td class="way"></td>';
+      }
+    }
+    out+='</tr>';
+  }
+  out+='</table>';
+  document.getElementById('text').innerHTML=out;
+  function ex(arr,i,j){
+    if(typeof arr[i]=='undefined'){
+      return 0;
+    }else if(typeof arr[i][j]=='undefined'){
+      return 0;
+    }else{
+      return arr[i][j];
+    }
+  }
+  function orient(arr,i,j,a,b,c,d){
+    if((ex(arr,i,j)==1)&&(ex(arr,i-1,j)==a)&&(ex(arr,i,j+1)==b)&&(ex(arr,i+1,j)==c)&&(ex(arr,i,j-1)==d)){
+      return true;
+    }else{
+      return false;
+    }
+  }
+</script>
