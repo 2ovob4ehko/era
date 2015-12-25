@@ -48,6 +48,8 @@ loadImage("way1100");
 loadImage("way1101");
 loadImage("way1110");
 loadImage("way1111");
+loadImage("mountain");
+loadImage("mountain_cave");
 //завантаження видимого файла карти
 loadScript("pole_"+j1+"_"+i1+".js");
 //створення канваса
@@ -63,38 +65,27 @@ new Tree(1,2,2,images["tree"],canvas);
 new Tree(1,2,3,images["tree"],canvas);
 new Tree(1,3,2,images["tree"],canvas);
 new Tree(1,3,3,images["tree"],canvas);
+//масив зображень виду гір
+var img_mount=[images["mountain"],images["mountain_cave"]];
+//Створення об’єкту гора
+new Mountain(1,5,2,img_mount,canvas);
+var mountain1=new Mountain(1,6,4,img_mount,canvas);
+mountain1.type=1;
 //масив зображень виду шляхів
 var img_ways=[
-	[
-		images["way0000"],
-		images["way0001"],
-		images["way0010"],
-		images["way0011"],
-		images["way0100"],
-		images["way0101"],
-		images["way0110"],
-		images["way0111"],
-		images["way1000"],
-		images["way1001"],
-		images["way1010"],
-		images["way1011"],
-		images["way1100"],
-		images["way1101"],
-		images["way1110"],
-		images["way1111"]
-	]
+	[images["way0000"],images["way0001"],images["way0010"],images["way0011"],images["way0100"],images["way0101"],images["way0110"],images["way0111"],images["way1000"],images["way1001"],images["way1010"],images["way1011"],images["way1100"],images["way1101"],images["way1110"],images["way1111"]]
 ];
 //Створення об’єкту шлях
-new Way(1,4,img_ways,canvas);
-new Way(2,4,img_ways,canvas);
-new Way(3,4,img_ways,canvas);
-new Way(4,4,img_ways,canvas);
-new Way(4,3,img_ways,canvas);
-new Way(4,2,img_ways,canvas);
-new Way(4,1,img_ways,canvas);
-new Way(5,4,img_ways,canvas);
-new Way(4,5,img_ways,canvas);
-new Way(7,7,img_ways,canvas);
+new Way(1,1,4,img_ways,canvas);
+new Way(1,2,4,img_ways,canvas);
+new Way(1,3,4,img_ways,canvas);
+new Way(1,4,4,img_ways,canvas);
+new Way(1,4,3,img_ways,canvas);
+new Way(1,4,2,img_ways,canvas);
+new Way(1,4,1,img_ways,canvas);
+new Way(1,5,4,img_ways,canvas);
+new Way(1,4,5,img_ways,canvas);
+new Way(1,7,7,img_ways,canvas);
 //Перемалювання
 setInterval(function(){
 	canvas.clear()

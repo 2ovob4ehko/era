@@ -1,4 +1,5 @@
-function Way (x,y,img,canvas){
+function Way (id,x,y,img,canvas){
+	this.id=id;
 	this.x=x;
 	this.y=y;
 	this.type=0;
