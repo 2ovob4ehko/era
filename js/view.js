@@ -133,3 +133,22 @@ function loadImage(name){
   images[name]=new Image();
   images[name].src="sprites/"+name+".png";
 }
+$("#scr")[0].addEventListener('contextmenu',function(e){
+	e.preventDefault();
+},false);
+/*Треба попробувать з (e.clientX-offsetX) - внутрішні координати елемента*/
+var curYPos=0,curXPos=0,curMove=false;
+$('#scr').mousemove(function(e){
+  if(curMove===true){
+		$("#scr").scrollTop(function(i,v){return v+(curYPos-e.clientY)*0.03;});
+		$("#scr").scrollLeft(function(i,v){return v+(curXPos-e.clientX)*0.03;});
+  }
+});
+$('#scr').mousedown(function(e){
+	curMove=true;
+	curYPos=e.clientY;
+	curXPos=e.clientX;
+});
+$('#scr').mouseup(function(e){
+	curMove=false;
+});
