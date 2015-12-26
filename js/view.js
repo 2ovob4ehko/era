@@ -4,8 +4,8 @@ var step=60;
 var j1=0;
 var i1=0;
 //кількість файлів карт в кординатах
-var n=1;
-var m=1;
+var n=3;
+var m=3;
 //розмірність карти в файлі
 var vn=10;
 var vm=10;
@@ -52,9 +52,10 @@ loadImage("mountain");
 loadImage("mountain_cave");
 //завантаження видимого файла карти
 loadScript("pole_"+j1+"_"+i1+".js");
+loadScript("pole_"+j1+"_"+parseInt(i1+1)+".js");
 //створення канваса
 $('#scr').append('<canvas id="canvas"></canvas>');
-var canvas = new Canvas(pole[j1][i1],step,$('#canvas'));
+var canvas = new Canvas(pole,step,$('#canvas'));
 canvas.show(step);
 //масив зображень рельєфу території
 var img_pole=[images["way"]];
@@ -136,12 +137,11 @@ function loadImage(name){
 $("#scr")[0].addEventListener('contextmenu',function(e){
 	e.preventDefault();
 },false);
-/*Треба попробувать з (e.clientX-offsetX) - внутрішні координати елемента*/
 var curYPos=0,curXPos=0,curMove=false;
 $('#scr').mousemove(function(e){
   if(curMove===true){
-		$("#scr").scrollTop(function(i,v){return v+(curYPos-e.clientY)*0.03;});
-		$("#scr").scrollLeft(function(i,v){return v+(curXPos-e.clientX)*0.03;});
+		$("#scr").scrollTop(function(i,v){return v-(-curYPos+(curYPos=e.clientY));});
+		$("#scr").scrollLeft(function(i,v){return v-(-curXPos+(curXPos=e.clientX));});
   }
 });
 $('#scr').mousedown(function(e){

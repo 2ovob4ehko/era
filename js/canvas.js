@@ -1,8 +1,8 @@
 function Canvas (shema,step,tag){
 	this.ctx=tag[0].getContext('2d');
 	this.shema=shema;
-	this.xSize=shema[0].length;
-	this.ySize=shema.length;
+	this.xSize=shema[j1][i1][0].length*3;
+	this.ySize=shema[j1][i1].length*3;
 	this.step=step;
 }
 Canvas.prototype.show=function(step){
