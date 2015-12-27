@@ -31,23 +31,25 @@ var ways=[];
 var images = {};
 //завантаження зображень на сторінку
 loadImage("way");
+loadImage("s_way");
 loadImage("tree");
-loadImage("way0000");
-loadImage("way0001");
-loadImage("way0010");
-loadImage("way0011");
-loadImage("way0100");
-loadImage("way0101");
-loadImage("way0110");
-loadImage("way0111");
-loadImage("way1000");
-loadImage("way1001");
-loadImage("way1010");
-loadImage("way1011");
-loadImage("way1100");
-loadImage("way1101");
-loadImage("way1110");
-loadImage("way1111");
+loadImage("s_tree");
+loadImage("s_way0000");
+loadImage("s_way0001");
+loadImage("s_way0010");
+loadImage("s_way0011");
+loadImage("s_way0100");
+loadImage("s_way0101");
+loadImage("s_way0110");
+loadImage("s_way0111");
+loadImage("s_way1000");
+loadImage("s_way1001");
+loadImage("s_way1010");
+loadImage("s_way1011");
+loadImage("s_way1100");
+loadImage("s_way1101");
+loadImage("s_way1110");
+loadImage("s_way1111");
 loadImage("mountain");
 loadImage("mountain_cave");
 //завантаження видимого файла карти
@@ -58,14 +60,16 @@ $('#scr').append('<canvas id="canvas"></canvas>');
 var canvas = new Canvas(pole,step,$('#canvas'));
 canvas.show(step);
 //масив зображень рельєфу території
-var img_pole=[images["way"]];
+var img_pole=[images["s_way"]];
 //Створення об’єкту території
 var field1 = new Field(img_pole,canvas);
+//масив зображень виду дерева
+var img_tree=[images["s_tree"],images["tree"]];
 //Створення об’єкту дерева
-new Tree(1,2,2,images["tree"],canvas);
-new Tree(1,2,3,images["tree"],canvas);
-new Tree(1,3,2,images["tree"],canvas);
-new Tree(1,3,3,images["tree"],canvas);
+new Tree(1,2,2,img_tree,canvas);
+new Tree(1,2,3,img_tree,canvas);
+new Tree(1,3,2,img_tree,canvas);
+new Tree(1,3,3,img_tree,canvas);
 //масив зображень виду гір
 var img_mount=[images["mountain"],images["mountain_cave"]];
 //Створення об’єкту гора
@@ -74,7 +78,7 @@ var mountain1=new Mountain(1,6,4,img_mount,canvas);
 mountain1.type=1;
 //масив зображень виду шляхів
 var img_ways=[
-	[images["way0000"],images["way0001"],images["way0010"],images["way0011"],images["way0100"],images["way0101"],images["way0110"],images["way0111"],images["way1000"],images["way1001"],images["way1010"],images["way1011"],images["way1100"],images["way1101"],images["way1110"],images["way1111"]]
+	[images["s_way0000"],images["s_way0001"],images["s_way0010"],images["s_way0011"],images["s_way0100"],images["s_way0101"],images["s_way0110"],images["s_way0111"],images["s_way1000"],images["s_way1001"],images["s_way1010"],images["s_way1011"],images["s_way1100"],images["s_way1101"],images["s_way1110"],images["s_way1111"]]
 ];
 //Створення об’єкту шлях
 new Way(1,1,4,img_ways,canvas);
