@@ -29,3 +29,50 @@ canvas
 		width:40px;
 		height:40px;
 	}
+#massage
+	{
+		position:absolute;
+		top:25%;
+		left:25%;
+		height:50%;
+		width:50%;
+		border:1px solid black;
+		overflow-y:auto;
+		border-radius:10px;
+		background:#ffffff;
+		display:none;
+	}
+#massage img
+	{
+		width:70%;
+		max-width:400px;
+		margin:auto;
+		display:block;
+	}
+#massage h2, #information h2
+	{
+		text-align:center;
+		border-bottom:1px solid black;
+	}
+#massage p, #information p
+	{
+		padding:0px 15px;
+	}
+#information
+	{
+		position:absolute;
+		top:25%;
+		right:1%;
+		height:50%;
+		width:200px;
+		border:1px solid black;
+		border-radius:10px;
+		overflow-y:auto;
+		background:#ffffff;
+		z-index:2;
+		display:none;
+	}
+#information table
+	{
+		margin:auto;
+	}

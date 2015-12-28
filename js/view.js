@@ -153,6 +153,6 @@ $('#scr').mousedown(function(e){
 	curYPos=e.clientY;
 	curXPos=e.clientX;
 });
-$('#scr').mouseup(function(e){
+$(document).mouseup(function(e){
 	curMove=false;
 });
