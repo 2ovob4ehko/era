@@ -1,5 +1,6 @@
 function Field (img,canvas){
 	this.canvas=canvas;
+	this.type=0;
 	this.img=img;
 }
 Field.prototype.draw=function(){
@@ -10,11 +11,11 @@ Field.prototype.draw=function(){
 		for(var j=0;j<this.canvas.xSize;j++){
 			var x=iso(j*this.canvas.step+move,i*this.canvas.step-move).x;
 			var y=iso(j*this.canvas.step+move,i*this.canvas.step-move).y;
-			this.canvas.ctx.drawImage(this.img[0],0,0,
+			this.canvas.ctx.drawImage(this.img[this.type],0,0,
 				imgW,imgH,x-this.canvas.step,y,this.canvas.step*2,this.canvas.step);
 		}
 	}
-	this.canvas.ctx.strokeStyle="#ff0000"; /*#465432*/
+	this.canvas.ctx.strokeStyle="#465432"; /*#465432*/
 	this.canvas.ctx.beginPath();
 	for(var i=0;i<this.canvas.ySize;i++){
 		for(var j=0;j<this.canvas.xSize;j++){

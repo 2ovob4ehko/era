@@ -6,6 +6,7 @@ function Tree (id,x,y,img,canvas){
 	this.img=img;
 	this.canvas=canvas;
 	buildings.push(this);
+	trees.push(this);
 }
 Tree.prototype.draw=function(){
 	var move=this.canvas.step*this.canvas.ySize/2;

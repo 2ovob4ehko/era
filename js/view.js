@@ -23,8 +23,12 @@ for(var a=0;a<m;a++){
 		}
 	}
 }
+//Порядкой номер Ери
+var era=1;
 //масив будівель
 var buildings=[];
+//Масив дерев
+var trees=[];
 //масив шляхів
 var ways=[];
 //масив зображень, які наносяться на територіяю
@@ -60,11 +64,11 @@ $('#scr').append('<canvas id="canvas"></canvas>');
 var canvas = new Canvas(pole,step,$('#canvas'));
 canvas.show(step);
 //масив зображень рельєфу території
-var img_pole=[images["s_way"]];
+var img_pole=[images["way"],images["s_way"]];
 //Створення об’єкту території
 var field1 = new Field(img_pole,canvas);
 //масив зображень виду дерева
-var img_tree=[images["s_tree"],images["tree"]];
+var img_tree=[images["tree"],images["s_tree"]];
 //Створення об’єкту дерева
 new Tree(1,2,2,img_tree,canvas);
 new Tree(1,2,3,img_tree,canvas);
@@ -81,7 +85,7 @@ var img_ways=[
 	[images["s_way0000"],images["s_way0001"],images["s_way0010"],images["s_way0011"],images["s_way0100"],images["s_way0101"],images["s_way0110"],images["s_way0111"],images["s_way1000"],images["s_way1001"],images["s_way1010"],images["s_way1011"],images["s_way1100"],images["s_way1101"],images["s_way1110"],images["s_way1111"]]
 ];
 //Створення об’єкту шлях
-new Way(1,1,4,img_ways,canvas);
+/*new Way(1,1,4,img_ways,canvas);
 new Way(1,2,4,img_ways,canvas);
 new Way(1,3,4,img_ways,canvas);
 new Way(1,4,4,img_ways,canvas);
@@ -90,9 +94,11 @@ new Way(1,4,2,img_ways,canvas);
 new Way(1,4,1,img_ways,canvas);
 new Way(1,5,4,img_ways,canvas);
 new Way(1,4,5,img_ways,canvas);
-new Way(1,7,7,img_ways,canvas);
+new Way(1,7,7,img_ways,canvas);*/
 //Перемалювання
 setInterval(function(){
+	//зміна стану декорацій в залежності від ери
+	setEra();
 	canvas.clear()
 	field1.draw();
 	ways.forEach(function(item){
@@ -102,57 +108,3 @@ setInterval(function(){
 		item.draw();
 	});
 },100);
-//Функції кнопок керування масштабом
-$('#size_plus').on('click',function(){
-	if(step<1040){
-		step/=0.7;
-		canvas.show(step);
-	}
-});
-$('#size_minus').on('click',function(){
-	if(step>15){
-		step*=0.7;
-		canvas.show(step);
-	}
-});
-//функція динамічного завантаження скрипта
-function loadScript(url){
-   $('head').append('<script src="js/'+url+'" type="text/javascript"></script>');
-}
-//Функція ізометрично перетворення
-function iso(x,y){
-	var point = {};
-	point.x = x - y;
-	point.y = (x + y) / 2;
-	return point;
-}
-//Функція зворотнього ізометричного перетворення
-function twoD(x,y){
-	var point = {};
-	point.x = (2 * y + x) / 2;
-	point.y = (2 * y - x) / 2;
-	return point;
-}
-//функція завантаження зображень на сторінку
-function loadImage(name){
-  images[name]=new Image();
-  images[name].src="sprites/"+name+".png";
-}
-$("#scr")[0].addEventListener('contextmenu',function(e){
-	e.preventDefault();
-},false);
-var curYPos=0,curXPos=0,curMove=false;
-$('#scr').mousemove(function(e){
-  if(curMove===true){
-		$("#scr").scrollTop(function(i,v){return v-(-curYPos+(curYPos=e.clientY));});
-		$("#scr").scrollLeft(function(i,v){return v-(-curXPos+(curXPos=e.clientX));});
-  }
-});
-$('#scr').mousedown(function(e){
-	curMove=true;
-	curYPos=e.clientY;
-	curXPos=e.clientX;
-});
-$(document).mouseup(function(e){
-	curMove=false;
-});
