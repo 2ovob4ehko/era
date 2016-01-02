@@ -15,10 +15,21 @@ Mountain.prototype.draw=function(){
 	this.canvas.ctx.drawImage(this.img[this.type],325,302,352,287,cordX-this.canvas.step*1.23,cordY-this.canvas.step*0.3,this.canvas.step*1.226*2,this.canvas.step*2);
 	/*this.canvas.ctx.globalCompositeOperation='source-over';*/
 }
-Mountain.prototype.selectUnit=function(img,frame){
-	var w=80;
-	var h=52;
+Mountain.prototype.selectUnit=function(frame){
+	var move=this.canvas.step*this.canvas.ySize/2;
 	var cordX=iso((this.x[0]-1)*this.canvas.step+move,(this.y[0]-1)*this.canvas.step-move).x;
 	var cordY=iso((this.x[0]-1)*this.canvas.step+move,(this.y[0]-1)*this.canvas.step-move).y;
-	ctx.drawImage(img,0+w*frame,0,w,h,cordX-40,cordY+7,w,h);
+	this.canvas.ctx.strokeStyle="#ee0a0a";
+	this.canvas.ctx.beginPath();
+	this.canvas.ctx.moveTo(cordX,cordY);
+	var p={x:this.canvas.step*(this.x[0]-1)+move+this.canvas.step*2,y:this.canvas.step*(this.y[0]-1)-move};
+	this.canvas.ctx.lineTo(iso(p.x,p.y).x,iso(p.x,p.y).y);
+	p={x:this.canvas.step*(this.x[0]-1)+move+this.canvas.step*2,y:this.canvas.step*(this.y[0]-1)-move+this.canvas.step*2};
+	this.canvas.ctx.lineTo(iso(p.x,p.y).x,iso(p.x,p.y).y);
+	p={x:this.canvas.step*(this.x[0]-1)+move,y:this.canvas.step*(this.y[0]-1)-move+this.canvas.step*2};
+	this.canvas.ctx.lineTo(iso(p.x,p.y).x,iso(p.x,p.y).y);
+	this.canvas.ctx.lineTo(cordX,cordY);
+	this.canvas.ctx.closePath();
+	this.canvas.ctx.lineWidth = 2;
+	this.canvas.ctx.stroke();
 }

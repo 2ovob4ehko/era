@@ -24,13 +24,15 @@ for(var a=0;a<m;a++){
 	}
 }
 //Порядкой номер Ери
-var era=1;
+var era=2;
 //масив будівель
 var buildings=[];
 //Масив дерев
 var trees=[];
 //масив шляхів
 var ways=[];
+//Вибраний юніт
+var selectedUnit=null;
 //масив зображень, які наносяться на територіяю
 var images = {};
 //завантаження зображень на сторінку
@@ -96,6 +98,7 @@ new Way(1,5,4,img_ways,canvas);
 new Way(1,4,5,img_ways,canvas);
 new Way(1,7,7,img_ways,canvas);*/
 //Перемалювання
+selectedUnit=buildings[5];
 setInterval(function(){
 	//зміна стану декорацій в залежності від ери
 	setEra();
@@ -104,6 +107,9 @@ setInterval(function(){
 	ways.forEach(function(item){
 		item.draw();
 	});
+	if(selectedUnit != null){
+		selectedUnit.selectUnit(1);
+	}
 	buildings.forEach(function(item){
 		item.draw();
 	});
