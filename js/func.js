@@ -66,3 +66,27 @@ function setEra(){
 		});
 	}
 }
+//Функція визначення співпадіння двох координат
+function hitTest(a,b){
+	var bool=0;
+	for(var i=0;i<a.x.length;i++){
+		for(var j=0;j<b.x.length;j++){
+			if(((a.x[i]>(b.x[j]-1)*step)&&(a.x[i]<b.x[j]*step))&&((a.y[i]>(b.y[j]-1)*step)&&(a.y[i]<b.y[j]*step))){
+	    	bool++;
+	  	}
+		}
+	}
+	if(bool>0){
+		return true;
+	}else{
+		return false;
+	}
+}
+//Функція визначення координат мишки на канвасі
+function mouse(canvas,e){
+  var rect = canvas.getBoundingClientRect();
+  return{
+    x: e.pageX-rect.left,
+    y: e.pageY-rect.top
+  };
+}

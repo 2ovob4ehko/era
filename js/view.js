@@ -31,6 +31,8 @@ var buildings=[];
 var trees=[];
 //масив шляхів
 var ways=[];
+//Масив виключень
+var BreakException={};
 //Вибраний юніт
 var selectedUnit=null;
 //масив зображень, які наносяться на територіяю
@@ -97,8 +99,9 @@ new Way(1,4,1,img_ways,canvas);
 new Way(1,5,4,img_ways,canvas);
 new Way(1,4,5,img_ways,canvas);
 new Way(1,7,7,img_ways,canvas);*/
+//порядковий номер кадру
+var frame=0;
 //Перемалювання
-selectedUnit=buildings[5];
 setInterval(function(){
 	//зміна стану декорацій в залежності від ери
 	setEra();
@@ -107,10 +110,30 @@ setInterval(function(){
 	ways.forEach(function(item){
 		item.draw();
 	});
+	//анімація виділеного
 	if(selectedUnit != null){
-		selectedUnit.selectUnit(1);
+		frame+=0.157;
+		selectedUnit.selectUnit(Math.abs(Math.sin(frame)));
 	}
 	buildings.forEach(function(item){
 		item.draw();
 	});
 },100);
+
+$('#canvas').on('click',function(e){
+	try{
+		buildings.forEach(function(item){
+      var p=twoD(mouse($('#canvas')[0],e).x,mouse($('#canvas')[0],e).y);
+			var move=step*canvas.ySize/2;
+      if(hitTest({x:[Math.ceil(p.x-move)],y:[Math.ceil(p.y+move)]},item)){
+        selectedUnit=item;
+        if(selectedUnit != null)throw BreakException;
+      //якщо мишка не попала - зняти виділення
+      }else{
+        selectedUnit=null;
+      }
+    });
+	}catch(er){
+    if(er!==BreakException) throw er;
+  }
+});

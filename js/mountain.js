@@ -19,7 +19,7 @@ Mountain.prototype.selectUnit=function(frame){
 	var move=this.canvas.step*this.canvas.ySize/2;
 	var cordX=iso((this.x[0]-1)*this.canvas.step+move,(this.y[0]-1)*this.canvas.step-move).x;
 	var cordY=iso((this.x[0]-1)*this.canvas.step+move,(this.y[0]-1)*this.canvas.step-move).y;
-	this.canvas.ctx.strokeStyle="#ee0a0a";
+	this.canvas.ctx.strokeStyle="rgba(225, 130, 0,"+frame+")";
 	this.canvas.ctx.beginPath();
 	this.canvas.ctx.moveTo(cordX,cordY);
 	var p={x:this.canvas.step*(this.x[0]-1)+move+this.canvas.step*2,y:this.canvas.step*(this.y[0]-1)-move};
@@ -30,6 +30,6 @@ Mountain.prototype.selectUnit=function(frame){
 	this.canvas.ctx.lineTo(iso(p.x,p.y).x,iso(p.x,p.y).y);
 	this.canvas.ctx.lineTo(cordX,cordY);
 	this.canvas.ctx.closePath();
-	this.canvas.ctx.lineWidth = 2;
+	this.canvas.ctx.lineWidth = 3;
 	this.canvas.ctx.stroke();
 }
