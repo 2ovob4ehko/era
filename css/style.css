@@ -68,7 +68,7 @@ canvas
 		border:1px solid black;
 		border-radius:10px;
 		overflow-y:auto;
-		background:#ffffff;
+		background:rgba(255, 255, 255, 0.7);
 		z-index:2;
 		display:none;
 	}

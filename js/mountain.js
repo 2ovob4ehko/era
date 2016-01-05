@@ -33,3 +33,8 @@ Mountain.prototype.selectUnit=function(frame){
 	this.canvas.ctx.lineWidth = 3;
 	this.canvas.ctx.stroke();
 }
+Mountain.prototype.showInformation=function($tag){
+	$tag.html('');
+	$tag.append('<h2>Гора</h2>');
+	$tag.css("display","block");
+}

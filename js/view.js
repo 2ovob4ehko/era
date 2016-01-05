@@ -1,5 +1,5 @@
 //маштаб карти
-var step=60;
+var step=120;
 //координати файла карти яку потрібно показувати
 var j1=0;
 var i1=0;
@@ -24,7 +24,7 @@ for(var a=0;a<m;a++){
 	}
 }
 //Порядкой номер Ери
-var era=2;
+var era=1;
 //масив будівель
 var buildings=[];
 //Масив дерев
@@ -127,10 +127,12 @@ $('#canvas').on('click',function(e){
 			var move=step*canvas.ySize/2;
       if(hitTest({x:[Math.ceil(p.x-move)],y:[Math.ceil(p.y+move)]},item)){
         selectedUnit=item;
-        if(selectedUnit != null)throw BreakException;
+				selectedUnit.showInformation($('#information'));
+        throw BreakException;
       //якщо мишка не попала - зняти виділення
       }else{
         selectedUnit=null;
+				$('#information').css("display","none");
       }
     });
 	}catch(er){

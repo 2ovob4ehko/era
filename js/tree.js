@@ -5,6 +5,16 @@ function Tree (id,x,y,img,canvas){
 	this.type=0;
 	this.img=img;
 	this.canvas=canvas;
+	this.data={
+		inhabited:true,/*можливість заселення*/
+		population:0,/*кількість проживаючих*/
+		populationMax:10,/*максимальна кількість проживаючих*/
+		recover:false,/*здатність до переродження*/
+		woodMax:300,/*кількість деревини*/
+		woodRemoved:0,/*деревини видобуто*/
+		fruitMax:600,/*кількість плодів за сезон*/
+		fruitRemoved:0/*кількість плодів зібрано за сезон, на початку нового сезону значення збивається*/
+	};
 	buildings.push(this);
 	trees.push(this);
 }
@@ -33,4 +43,16 @@ Tree.prototype.selectUnit=function(frame){
 	this.canvas.ctx.closePath();
 	this.canvas.ctx.lineWidth = 3;
 	this.canvas.ctx.stroke();
+}
+Tree.prototype.showInformation=function($tag){
+	$tag.html('');
+	var $table=$("<table></table>");
+	if(this.data.inhabited){
+		$table.append('<tr><td>Населення</td><td>'+this.data.population+'/'+this.data.populationMax+'</td></tr>');
+	}else{
+		$table.append('<tr><td>Плоди</td><td>'+parseInt(this.data.fruitMax-this.data.fruitRemoved)+'/'+this.data.fruitMax+'</td></tr>');
+		$table.append('<tr><td>Деревина</td><td>'+parseInt(this.data.woodMax-this.data.woodRemoved)+'/'+this.data.woodMax+'</td></tr>');
+	}
+	$tag.append('<h2>Дерево</h2><p>Дані:</p>',$table);
+	$tag.css("display","block");
 }
