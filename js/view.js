@@ -29,6 +29,8 @@ var era=1;
 var buildings=[];
 //Масив дерев
 var trees=[];
+//Масив гір
+var mountains=[];
 //масив шляхів
 var ways=[];
 //Масив виключень
