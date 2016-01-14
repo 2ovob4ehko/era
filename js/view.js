@@ -63,33 +63,35 @@ loadImage("s_way1111");
 loadImage("mountain");
 loadImage("mountain_cave");
 //завантаження видимого файла карти
-loadScript("pole_"+j1+"_"+i1+".js");
-loadScript("pole_"+j1+"_"+parseInt(i1+1)+".js");
+loadScript("map/pole_"+j1+"_"+i1+".js");
+loadScript("map/pole_"+j1+"_"+parseInt(i1+1)+".js");
+loadScript("map/pole_"+j1+"_"+parseInt(i1+2)+".js");
+loadScript("map/pole_"+parseInt(j1+1)+"_"+i1+".js");
+loadScript("map/pole_"+parseInt(j1+1)+"_"+parseInt(i1+1)+".js");
+loadScript("map/pole_"+parseInt(j1+1)+"_"+parseInt(i1+2)+".js");
+loadScript("map/pole_"+parseInt(j1+2)+"_"+i1+".js");
+loadScript("map/pole_"+parseInt(j1+2)+"_"+parseInt(i1+1)+".js");
+loadScript("map/pole_"+parseInt(j1+2)+"_"+parseInt(i1+2)+".js");
 //створення канваса
 $('#scr').append('<canvas id="canvas"></canvas>');
 var canvas = new Canvas(pole,step,$('#canvas'));
 canvas.show(step);
 //масив зображень рельєфу території
 var img_pole=[images["way"],images["s_way"]];
-//Створення об’єкту території
-var field1 = new Field(img_pole,canvas);
 //масив зображень виду дерева
 var img_tree=[images["tree"],images["s_tree"]];
-//Створення об’єкту дерева
-new Tree(1,2,2,img_tree,canvas);
-new Tree(1,2,3,img_tree,canvas);
-new Tree(1,3,2,img_tree,canvas);
-new Tree(1,3,3,img_tree,canvas);
 //масив зображень виду гір
 var img_mount=[images["mountain"],images["mountain_cave"]];
-//Створення об’єкту гора
-new Mountain(1,5,2,img_mount,canvas);
-var mountain1=new Mountain(1,6,4,img_mount,canvas);
-mountain1.type=1;
 //масив зображень виду шляхів
 var img_ways=[
 	[images["s_way0000"],images["s_way0001"],images["s_way0010"],images["s_way0011"],images["s_way0100"],images["s_way0101"],images["s_way0110"],images["s_way0111"],images["s_way1000"],images["s_way1001"],images["s_way1010"],images["s_way1011"],images["s_way1100"],images["s_way1101"],images["s_way1110"],images["s_way1111"]]
 ];
+//Створення об’єкту території
+var field1 = new Field(img_pole,canvas);
+//первинна розстановка об’єктів по полю
+field1.setFromMap();
+//задання першій створеній горі статусу печери
+mountains[0].type=1;
 //Створення об’єкту шлях
 /*new Way(1,1,4,img_ways,canvas);
 new Way(1,2,4,img_ways,canvas);
@@ -141,3 +143,4 @@ $('#canvas').on('click',function(e){
     if(er!==BreakException) throw er;
   }
 });
+$("#scr").scrollLeft(3254);

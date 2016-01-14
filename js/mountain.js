@@ -51,7 +51,7 @@ Mountain.prototype.showInformation=function($tag){
 		if(this.type==1){
 			$table.append('<tr><td>Населення</td><td>'+this.data.population+'/'+this.data.populationMax+'</td></tr>');
 		}
-		$table.append('<tr><td>Каміння</td><td>'+this.data.stown+'</td></tr>');
+		$table.append('<tr><td>Каміння</td><td>'+this.data.stone+'</td></tr>');
 	}else{
 		$table.append('<tr><td>Каміння</td><td>'+this.data.stone+'</td></tr>');
 		$table.append('<tr><td>Мідь</td><td>'+this.data.cuprum+'</td></tr>');

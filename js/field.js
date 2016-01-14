@@ -35,3 +35,20 @@ Field.prototype.draw=function(){
 	this.canvas.ctx.lineWidth = 1;
 	this.canvas.ctx.stroke();
 }
+Field.prototype.setFromMap=function(){
+	for(var l=0;l<this.canvas.shema.length;l++){
+		for(var k=0;k<this.canvas.shema[l].length;k++){
+			for(var i=0;i<this.canvas.shema[l][k].length;i++){
+				for(var j=0;j<this.canvas.shema[l][k][i].length;j++){
+					if(this.canvas.shema[l][k][i][j].m==2){
+						//Створення об’єкту дерева
+						new Tree(1,j+1+10*k,i+1+10*l,img_tree,this.canvas);
+					}else if(this.canvas.shema[l][k][i][j].m==3){
+						//Створення об’єкту гора
+						new Mountain(1,j+1+10*k,i+1+10*l,img_mount,this.canvas);
+					}
+				}
+			}
+		}
+	}
+}
