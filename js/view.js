@@ -33,6 +33,8 @@ var trees=[];
 var mountains=[];
 //масив шляхів
 var ways=[];
+//масив людей
+var homos=[];
 //Масив виключень
 var BreakException={};
 //Вибраний юніт
@@ -62,6 +64,7 @@ loadImage("s_way1110");
 loadImage("s_way1111");
 loadImage("mountain");
 loadImage("mountain_cave");
+loadImage("monkey");
 //завантаження видимого файла карти
 loadScript("map/pole_"+j1+"_"+i1+".js");
 loadScript("map/pole_"+j1+"_"+parseInt(i1+1)+".js");
