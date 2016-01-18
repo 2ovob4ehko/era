@@ -23,8 +23,6 @@ for(var a=0;a<m;a++){
 		}
 	}
 }
-//Порядкой номер Ери
-var era=1;
 //масив будівель
 var buildings=[];
 //Масив дерев
@@ -111,7 +109,7 @@ var frame=0;
 //Перемалювання
 setInterval(function(){
 	//зміна стану декорацій в залежності від ери
-	setEra();
+	scenario();
 	canvas.clear()
 	field1.draw();
 	ways.forEach(function(item){

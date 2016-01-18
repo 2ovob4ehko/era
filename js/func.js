@@ -34,6 +34,7 @@ function loadImage(name){
   images[name]=new Image();
   images[name].src="sprites/"+name+".png";
 }
+//функції переміщення огляду за допомогою миші
 $("#scr")[0].addEventListener('contextmenu',function(e){
 	e.preventDefault();
 },false);
@@ -52,8 +53,18 @@ $('#scr').mousedown(function(e){
 $(document).mouseup(function(e){
 	curMove=false;
 });
-//зміна стану декорацій в залежності від ери
-function setEra(){
+//Зміна стану карти за сценарієм
+//Порядкой номер Ери
+var era=1;
+var massage={m:0,e:true};
+function scenario(){
+	if((massage.m==0)&&(massage.e)){
+		$('#massage').html('');
+		$('#massage').append('<h2>Ласкаво просимо до гри</h2><img src="http://ours-nature.ru/new_site/img/1213814452/i_008.jpg"><p>Гра починається з доби, коли люди людьми не звалися та ще жили на деревах.</p><p>Вам дається десяток людиноподібних мавп. Зараз вам потрібно поселити їх на дереві та спостерігати за їх розселенням.</p><button onclick="massage.e=false" class="massage_button">Продовжити</button>');
+		$('#massage').css("display","block");
+	}else{
+		$('#massage').css("display","none");
+	}
 	if(era==1){
 		field1.type=0;
 		trees.forEach(function(item){

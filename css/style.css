@@ -29,6 +29,13 @@ canvas
 		width:40px;
 		height:40px;
 	}
+.massage_button
+	{
+		height:40px;
+		width:50%;
+		display:block;
+		margin:10px auto;
+	}
 #massage
 	{
 		position:absolute;
