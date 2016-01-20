@@ -59,8 +59,8 @@ var era=1;
 var massage={m:0,e:true};
 function scenario(){
 	if((massage.m==0)&&(massage.e)){
-		$('#massage').html('');
-		$('#massage').append('<h2>Ласкаво просимо до гри</h2><img src="http://ours-nature.ru/new_site/img/1213814452/i_008.jpg"><p>Гра починається з доби, коли люди людьми не звалися та ще жили на деревах.</p><p>Вам дається десяток людиноподібних мавп. Зараз вам потрібно поселити їх на дереві та спостерігати за їх розселенням.</p><button onclick="massage.e=false;" class="massage_button">Продовжити</button>');
+		$('#massage_scroll').html('<img src="http://ours-nature.ru/new_site/img/1213814452/i_008.jpg"><p>Гра починається з доби, коли люди людьми не звалися та ще жили на деревах.</p><p>Вам дається десяток людиноподібних мавп. Зараз вам потрібно поселити їх на дереві та спостерігати за їх розселенням.</p>');
+		$('#massage h2').html('Ласкаво просимо до гри');
 		$('#massage').css("display","block");
 	}else{
 		$('#massage').css("display","none");

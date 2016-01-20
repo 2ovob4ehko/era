@@ -44,10 +44,15 @@ canvas
 		height:50%;
 		width:50%;
 		border:1px solid black;
-		overflow-y:auto;
 		border-radius:10px;
 		background:#ffffff;
 		display:none;
+	}
+#massage_scroll
+	{
+		height:70%;
+		width:99%;
+		overflow-y:auto;
 	}
 #massage img
 	{
@@ -82,4 +87,26 @@ canvas
 #information table
 	{
 		margin:auto;
+	}
+#bonus_panel
+	{
+		position:fixed;
+		top:0;
+		left:0;
+		height:100%;
+		width:60px;
+		overflow-y: auto;
+	}
+#bonus_panel .bonus_button
+	{
+		width:40px;
+		height:40px;
+		border:1px solid black;
+		text-align:center;
+		cursor:pointer;
+		margin:5px 0;
+	}
+#bonus_panel .bonus_button img
+	{
+		height:60%;
 	}
