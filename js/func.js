@@ -62,6 +62,10 @@ function scenario(){
 		$('#massage_scroll').html('<img src="http://ours-nature.ru/new_site/img/1213814452/i_008.jpg"><p>Гра починається з доби, коли люди людьми не звалися та ще жили на деревах.</p><p>Вам дається десяток людиноподібних мавп. Зараз вам потрібно поселити їх на дереві та спостерігати за їх розселенням.</p>');
 		$('#massage h2').html('Ласкаво просимо до гри');
 		$('#massage').css("display","block");
+		$('.massage_button').on('click',function(){
+			massage.e=false;
+			$('#bonus_homo').css("display","block");
+		});
 	}else{
 		$('#massage').css("display","none");
 	}
@@ -76,6 +80,11 @@ function scenario(){
 			item.type=1;
 		});
 	}
+}
+//Функція яка виконується при натисненні бонусу людей
+function bonusHomo(q){
+	selectedUnit=null;
+	buttonPressed={n:"bonusHomo",q:10};
 }
 //Функція визначення співпадіння двох координат
 function hitTest(a,b){

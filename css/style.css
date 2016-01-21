@@ -105,6 +105,7 @@ canvas
 		text-align:center;
 		cursor:pointer;
 		margin:5px 0;
+		display:none;
 	}
 #bonus_panel .bonus_button img
 	{

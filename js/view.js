@@ -37,6 +37,8 @@ var homos=[];
 var BreakException={};
 //Вибраний юніт
 var selectedUnit=null;
+//Натиснута кнопка
+var buttonPressed=null;
 //масив зображень, які наносяться на територіяю
 var images = {};
 //завантаження зображень на сторінку
@@ -143,5 +145,12 @@ $('#canvas').on('click',function(e){
 	}catch(er){
     if(er!==BreakException) throw er;
   }
+	if(buttonPressed != null && buttonPressed.n=="bonusHomo"){
+		if(selectedUnit.constructor.name=="Tree"){
+			selectedUnit.data.population+=buttonPressed.q;
+			$('#bonus_homo').css("display","none");
+			buttonPressed=null;
+		}
+	}
 });
 $("#scr").scrollLeft(3254);
