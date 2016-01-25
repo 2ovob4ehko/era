@@ -85,6 +85,7 @@ function scenario(){
 function bonusHomo(q){
 	selectedUnit=null;
 	buttonPressed={n:"bonusHomo",q:10};
+	$('#bonus_homo').css("borderColor","#e08200");
 }
 //Функція визначення співпадіння двох координат
 function hitTest(a,b){
